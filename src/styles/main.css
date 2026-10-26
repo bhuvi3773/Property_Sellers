@@ -266,65 +266,26 @@ img {
 }
 
 /* =======================================================
-   SCROLL-TRIGGERED REVEAL ANIMATIONS (Desktop + Mobile)
+   CLEAN STATIC VISIBILITY (NO DELAYED SCROLL REVEALS)
    ======================================================= */
-.reveal-init {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 700ms var(--ease-out-expo), transform 700ms var(--ease-out-expo);
-  will-change: opacity, transform;
-}
-
-.reveal-init.is-revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-fade {
-  opacity: 0;
-  transition: opacity 600ms var(--ease-smooth);
-}
-.reveal-fade.is-revealed {
-  opacity: 1;
-}
-
+.reveal-init,
+.reveal-fade,
 .reveal-scale {
-  opacity: 0;
-  transform: scale(0.96);
-  transition: opacity 700ms var(--ease-out-expo), transform 700ms var(--ease-out-expo);
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
 }
+
+.reveal-init.is-revealed,
+.reveal-fade.is-revealed,
 .reveal-scale.is-revealed {
-  opacity: 1;
-  transform: scale(1);
+  opacity: 1 !important;
+  transform: none !important;
 }
 
-/* Stagger Delays for Sequential Children */
-.reveal-stagger > *:nth-child(1) { transition-delay: 50ms; }
-.reveal-stagger > *:nth-child(2) { transition-delay: 130ms; }
-.reveal-stagger > *:nth-child(3) { transition-delay: 210ms; }
-.reveal-stagger > *:nth-child(4) { transition-delay: 290ms; }
-.reveal-stagger > *:nth-child(5) { transition-delay: 370ms; }
-.reveal-stagger > *:nth-child(6) { transition-delay: 450ms; }
-
-/* Image Mask Reveal */
-.image-mask-container {
-  overflow: hidden;
-  position: relative;
-}
-.image-mask-container img {
-  transform: scale(1.05);
-  transition: transform 900ms var(--ease-out-expo);
-}
-.image-mask-container:hover img {
-  transform: scale(1.08);
-}
-
-/* Mobile Optimizations for Animations */
-@media (max-width: 768px) {
-  .reveal-init {
-    transform: translateY(18px); /* Reduced movement for smoother mobile scrolling */
-    transition-duration: 500ms;
-  }
+.reveal-stagger > * {
+  transition: none !important;
+  transition-delay: 0ms !important;
 }
 
 /* Demo Mode Subtle Notice Bar */
@@ -373,12 +334,6 @@ img {
   object-position: center 30%;
   /* Crisp, luminous luxury clarity without dark muddy filters */
   filter: brightness(0.85) contrast(1.06) saturate(1.08);
-  transform: scale(1.02);
-  transition: transform 12s ease-out;
-}
-
-.hero-section:hover .hero-img-backdrop {
-  transform: scale(1.05);
 }
 
 .hero-gradient-overlay {
@@ -425,13 +380,6 @@ img {
   height: 7px;
   border-radius: 50%;
   background-color: var(--accent-gold);
-  box-shadow: 0 0 10px var(--accent-gold);
-  animation: pulse-dot 2.5s infinite;
-}
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.85); }
 }
 
 .hero-headline {
@@ -829,40 +777,19 @@ img {
   flex-wrap: wrap;
 }
 
-/* =======================================================
-   BIDIRECTIONAL SCROLL MOTION ANIMATIONS
-   - Downward scroll: elements smoothly drift left or right
-   - Upward scroll: elements smoothly rearrange back to grid
-   ======================================================= */
+/* Directional scroll shifts disabled - static stability */
 .scroll-shift-left,
 .scroll-shift-right,
-.scroll-directional-card {
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-  will-change: transform;
-}
-
-/* Realigned state: smooth snap-back rearrange animation */
+.scroll-directional-card,
+.scroll-shift-left.is-shifted,
+.scroll-shift-right.is-shifted,
+.scroll-directional-card.is-shifted,
 .scroll-shift-left.is-realigned,
 .scroll-shift-right.is-realigned,
 .scroll-directional-card.is-realigned {
-  transform: translate3d(0, 0, 0) !important;
-  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.15) !important;
-}
-
-/* Subtle elevation shadow during shift */
-.scroll-shift-left.is-shifted,
-.scroll-shift-right.is-shifted,
-.scroll-directional-card.is-shifted {
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.45), 0 0 20px rgba(223, 190, 133, 0.08);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .scroll-shift-left,
-  .scroll-shift-right,
-  .scroll-directional-card {
-    transform: none !important;
-    transition: none !important;
-  }
+  transform: none !important;
+  transition: none !important;
+  box-shadow: none !important;
 }
 
 /* =======================================================

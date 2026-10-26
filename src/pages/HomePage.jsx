@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Compass, Shield, Award, Sparkles, Building2, MapPin } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { useDirectionalScroll } from '../hooks/useDirectionalScroll';
 import { useRealEstate } from '../context/RealEstateContext';
 import { CATEGORIES } from '../data/properties';
 import QuickFilterBar from '../components/property/QuickFilterBar';
@@ -12,7 +11,6 @@ import HorizontalScrollShowcase from '../components/home/HorizontalScrollShowcas
 export default function HomePage() {
   const { allProperties } = useRealEstate();
   useScrollReveal();
-  useDirectionalScroll();
 
   const featuredProperties = allProperties.filter(p => p.featured).slice(0, 6);
   const newProperties = allProperties.filter(p => p.isNew).slice(0, 3);
@@ -34,17 +32,17 @@ export default function HomePage() {
         </div>
 
         <div className="container hero-content-container">
-          <div className="hero-editorial-badge reveal-init">
+          <div className="hero-editorial-badge">
             <span className="hero-badge-dot" />
             <span>Curators of India's Sovereign Architectural Residences</span>
           </div>
 
-          <h1 className="hero-headline reveal-init">
+          <h1 className="hero-headline">
             The Architecture <br />
             <em>of Sovereign Living.</em>
           </h1>
 
-          <p className="hero-subheadline reveal-init">
+          <p className="hero-subheadline">
             Private estates, sea-facing penthouses, and heritage havelis across Mumbai, New Delhi, Goa, Bengaluru, and Udaipur.
           </p>
 
@@ -54,7 +52,7 @@ export default function HomePage() {
           </div>
 
           {/* Key Metric Highlights Band in Indian Rupees */}
-          <div className="hero-metrics-band reveal-init">
+          <div className="hero-metrics-band">
             <div className="metric-item">
               <span className="metric-number">₹4,200 Cr+</span>
               <span className="metric-label">Private Portfolio Volume</span>
@@ -79,7 +77,7 @@ export default function HomePage() {
       </section>
 
       {/* =======================================================
-          PINNED HORIZONTAL SCROLL SHOWCASE FOR LISTED PROPERTIES
+          PINNED HORIZONTAL SCROLL SHOWCASE FOR ICONIC INDIAN RESIDENCES
           - Section pins to viewport as user scrolls vertically
           - Listed properties glide in from the right across the screen
           - Once finished, vertical scrolling resumes down smoothly
@@ -87,7 +85,7 @@ export default function HomePage() {
       <HorizontalScrollShowcase properties={featuredProperties} />
 
       {/* =======================================================
-          ARCHITECTURAL CATEGORIES WITH DIRECTIONAL SCROLL
+          ARCHITECTURAL CATEGORIES
           ======================================================= */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)', borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)' }}>
         <div className="container">
@@ -99,12 +97,12 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="category-cards-grid reveal-stagger">
-            {CATEGORIES.filter(c => c.id !== 'all').map((cat, idx) => (
+          <div className="category-cards-grid">
+            {CATEGORIES.filter(c => c.id !== 'all').map((cat) => (
               <Link
                 key={cat.id}
                 to={`/buy?category=${encodeURIComponent(cat.id)}`}
-                className={`category-card reveal-init ${idx % 2 === 0 ? 'scroll-shift-left' : 'scroll-shift-right'}`}
+                className="category-card"
               >
                 <div className="cat-img-box">
                   <img src={cat.image} alt={cat.name} className="cat-img" loading="lazy" />
@@ -130,8 +128,8 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <div className="editorial-spread-grid">
-            {/* Visual Column with Staggered Media */}
-            <div className="editorial-media-column reveal-init scroll-shift-left">
+            {/* Visual Column */}
+            <div className="editorial-media-column">
               <div className="editorial-large-img-box">
                 <img
                   src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85"
@@ -153,7 +151,7 @@ export default function HomePage() {
             </div>
 
             {/* Content Column */}
-            <div className="editorial-text-column reveal-init scroll-shift-right">
+            <div className="editorial-text-column">
               <div className="editorial-tag">The Vault & Vista Philosophy</div>
               <h2 className="section-title">
                 We Do Not Sell Square Footage. <br />
@@ -204,7 +202,7 @@ export default function HomePage() {
       </section>
 
       {/* =======================================================
-          NEWLY LISTED ACQUISITIONS WITH DIRECTIONAL SCROLL
+          NEWLY LISTED ACQUISITIONS
           ======================================================= */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)', borderTop: '1px solid var(--border-subtle)' }}>
         <div className="container">
@@ -222,14 +220,9 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="properties-grid reveal-stagger" style={{ marginTop: '3rem' }}>
-            {newProperties.map((property, idx) => (
-              <div
-                key={property.id}
-                className={idx % 2 === 0 ? 'scroll-shift-left' : 'scroll-shift-right'}
-              >
-                <PropertyCard property={property} />
-              </div>
+          <div className="properties-grid" style={{ marginTop: '3rem' }}>
+            {newProperties.map((property) => (
+              <PropertyCard key={property.id} property={property} />
             ))}
           </div>
         </div>
@@ -248,8 +241,8 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="testimonials-grid reveal-stagger">
-            <div className="testimonial-card reveal-init scroll-shift-left">
+          <div className="testimonials-grid">
+            <div className="testimonial-card">
               <p className="testimonial-quote">
                 "Vault & Vista approached the acquisition of our Malabar Hill residence with the scholarly depth of conservation architects. Their appreciation for historical basalt masonry and Arabian Sea wind-channels saved months of deliberation."
               </p>
@@ -259,7 +252,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="testimonial-card reveal-init scroll-directional-card">
+            <div className="testimonial-card">
               <p className="testimonial-quote">
                 "In Lutyens' Delhi, finding an authentic mid-century bungalow with uncompromised tree canopy and private grounds was impossible until Vault & Vista introduced us to Golf Links. Impeccable discretion."
               </p>
@@ -269,7 +262,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="testimonial-card reveal-init scroll-shift-right">
+            <div className="testimonial-card">
               <p className="testimonial-quote">
                 "Their understanding of Goa coastal zoning, CRZ permissions, and heritage Indo-Portuguese restoration is peerless. A bespoke private family-office experience translated into coastal architecture."
               </p>
@@ -287,7 +280,7 @@ export default function HomePage() {
           ======================================================= */}
       <section className="section-tight" style={{ borderTop: '1px solid var(--border-subtle)' }}>
         <div className="container">
-          <div className="cta-banner-card reveal-init">
+          <div className="cta-banner-card">
             <div className="cta-banner-content">
               <div className="editorial-tag">Private Placements</div>
               <h2 className="cta-banner-title">
