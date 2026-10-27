@@ -59,7 +59,7 @@ export default function PropertyDetailPage() {
     if (navigator.share) {
       try {
         await navigator.share(shareData);
-      } catch (err) {
+      } catch {
         // user cancelled
       }
     } else {
@@ -67,7 +67,7 @@ export default function PropertyDetailPage() {
       try {
         await navigator.clipboard.writeText(window.location.href);
         showToast('Residence dossier link copied to your clipboard.', 'success');
-      } catch (err) {
+      } catch {
         showToast('Failed to copy link.', 'warn');
       }
     }

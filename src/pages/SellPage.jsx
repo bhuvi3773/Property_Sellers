@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, ShieldCheck, ArrowRight, ArrowLeft, Building2, UserCheck, Sparkles } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, ArrowRight, ArrowLeft } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import Breadcrumbs from '../components/common/Breadcrumbs';
 import { CATEGORIES, LOCATIONS, AMENITY_OPTIONS } from '../data/properties';

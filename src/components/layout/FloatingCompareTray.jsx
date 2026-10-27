@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { SlidersHorizontal, X, ArrowRight } from 'lucide-react';
+import { SlidersHorizontal, X, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 import { useRealEstate } from '../../context/RealEstateContext';
 
 export default function FloatingCompareTray() {
   const { compareList, allProperties, toggleCompare, clearCompare } = useRealEstate();
+  const [isMinimized, setIsMinimized] = useState(false);
   const location = useLocation();
 
   // Hide tray on compare page itself or when empty
@@ -14,13 +15,31 @@ export default function FloatingCompareTray() {
 
   const selectedProperties = allProperties.filter(p => compareList.includes(p.id));
 
+  if (isMinimized) {
+    return (
+      <aside className="floating-compare-minimized" role="region" aria-label="Comparison Tray Minimized">
+        <button
+          onClick={() => setIsMinimized(false)}
+          className="compare-min-pill"
+          aria-label="Expand Comparison Matrix tray"
+        >
+          <SlidersHorizontal size={14} color="var(--accent-gold)" />
+          <span className="compare-min-text">
+            <strong>{compareList.length}</strong> in Matrix
+          </span>
+          <ChevronUp size={14} />
+        </button>
+      </aside>
+    );
+  }
+
   return (
-    <div className="floating-compare-tray" role="region" aria-label="Comparison Tray">
+    <aside className="floating-compare-tray" role="region" aria-label="Comparison Tray">
       <div className="compare-tray-content">
         <div className="compare-tray-info">
           <SlidersHorizontal size={16} color="var(--accent-gold)" />
           <span className="compare-tray-count">
-            <strong>{compareList.length}</strong> / 4 for Comparison
+            <strong>{compareList.length}</strong>/4 for Comparison
           </span>
         </div>
 
@@ -52,8 +71,16 @@ export default function FloatingCompareTray() {
           <button onClick={clearCompare} className="btn btn-ghost btn-sm" title="Clear all">
             Clear
           </button>
+          <button
+            onClick={() => setIsMinimized(true)}
+            className="btn btn-ghost btn-sm btn-icon-only"
+            title="Minimize tray"
+            aria-label="Minimize comparison tray"
+          >
+            <ChevronDown size={14} />
+          </button>
         </div>
       </div>
-    </div>
+    </aside>
   );
 }

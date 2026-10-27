@@ -46,11 +46,6 @@ export default function App() {
       <Router>
         <ScrollToTop />
         <div className="app-shell" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-          {/* Subtle Demo Banner */}
-          <div className="demo-banner">
-            <span><strong>VAULT & VISTA</strong> — Interactive Frontend Architectural Experience (Demo Mode)</span>
-          </div>
-
           <Header />
           <FullscreenNav />
 

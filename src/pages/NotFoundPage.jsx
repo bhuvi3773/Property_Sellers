@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Compass } from 'lucide-react';
-import Breadcrumbs from '../components/common/Breadcrumbs';
+import { ArrowRight } from 'lucide-react';
 
 export default function NotFoundPage() {
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, CheckCircle2, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Phone, MapPin, Clock, CheckCircle2, ShieldCheck, ArrowRight } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import Breadcrumbs from '../components/common/Breadcrumbs';
 import { GLOBAL_SHOWROOMS } from '../data/properties';

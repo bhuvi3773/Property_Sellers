@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { SlidersHorizontal, X, Check, Minus, ArrowRight, Trash2 } from 'lucide-react';
+import { X, Check, Minus, Trash2 } from 'lucide-react';
 import { useRealEstate } from '../context/RealEstateContext';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { EmptyState } from '../components/common/CommonComponents';

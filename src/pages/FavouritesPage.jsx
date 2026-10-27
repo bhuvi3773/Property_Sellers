@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Heart, Trash2, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useRealEstate } from '../context/RealEstateContext';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import PropertyCard from '../components/property/PropertyCard';
@@ -8,7 +7,8 @@ import { EmptyState } from '../components/common/CommonComponents';
 import Breadcrumbs from '../components/common/Breadcrumbs';
 
 export default function FavouritesPage() {
-  const { favourites, allProperties, toggleFavourite } = useRealEstate();
+  const { favourites, allProperties } = useRealEstate();
+  const navigate = useNavigate();
   useScrollReveal([favourites]);
 
   const savedProperties = allProperties.filter(p => favourites.includes(p.id));
@@ -42,7 +42,7 @@ export default function FavouritesPage() {
             title="Your Portfolio is Currently Empty"
             description="You have not saved any residences to your private portfolio. Explore our acquisitions or leases and click the heart icon on any residence to bookmark it."
             actionText="Discover Available Residences"
-            onAction={() => window.location.href = '/buy'}
+            onAction={() => navigate('/buy')}
           />
         ) : (
           <div className="properties-grid reveal-stagger">

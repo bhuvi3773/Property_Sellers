@@ -14,6 +14,8 @@ html {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
@@ -22,6 +24,7 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  max-width: 100vw;
   min-height: 100vh;
 }
 
@@ -238,31 +241,34 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.25rem 0.65rem;
+  padding: 0.35rem 0.75rem;
   font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   border-radius: var(--radius-xs);
   line-height: 1;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
 .badge-sale {
-  background-color: rgba(200, 168, 112, 0.15);
-  color: var(--accent-gold);
-  border: 1px solid rgba(223, 190, 133, 0.4);
+  background-color: rgba(20, 37, 31, 0.92);
+  color: var(--accent-champagne);
+  border: 1px solid var(--border-gold);
 }
 
 .badge-rent {
-  background-color: rgba(143, 164, 153, 0.15);
-  color: #B5CCC0;
-  border: 1px solid rgba(143, 164, 153, 0.4);
+  background-color: rgba(20, 37, 31, 0.92);
+  color: #C2DAD0;
+  border: 1px solid rgba(127, 163, 146, 0.55);
 }
 
 .badge-new {
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(20, 37, 31, 0.92);
   color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 /* =======================================================
@@ -316,7 +322,7 @@ img {
   min-height: 94vh;
   display: flex;
   align-items: center;
-  padding-top: calc(var(--header-height) + 2rem);
+  padding-top: calc(var(--header-total-height, 112px) + 2rem);
   padding-bottom: 4rem;
   overflow: hidden;
 }
@@ -333,16 +339,16 @@ img {
   object-fit: cover;
   object-position: center 30%;
   /* Crisp, luminous luxury clarity without dark muddy filters */
-  filter: brightness(0.85) contrast(1.06) saturate(1.08);
+  filter: brightness(0.88) contrast(1.05) saturate(1.05);
 }
 
 .hero-gradient-overlay {
   position: absolute;
   inset: 0;
-  /* Dual-vignette gradient: crystal clear center & right, subtle dark tint on left and bottom for text legibility */
+  /* Architectural luxury vignette: deep forest slate tones harmonized with natural light */
   background: 
-    linear-gradient(180deg, rgba(12, 14, 13, 0.4) 0%, rgba(12, 14, 13, 0.15) 35%, rgba(12, 14, 13, 0.75) 80%, #0C0E0D 100%),
-    linear-gradient(90deg, rgba(12, 14, 13, 0.75) 0%, rgba(12, 14, 13, 0.35) 50%, transparent 100%);
+    linear-gradient(180deg, rgba(20, 37, 31, 0.4) 0%, rgba(20, 37, 31, 0.2) 40%, rgba(20, 37, 31, 0.82) 85%, #14251F 100%),
+    linear-gradient(90deg, rgba(20, 37, 31, 0.78) 0%, rgba(20, 37, 31, 0.4) 55%, transparent 100%);
   pointer-events: none;
 }
 
@@ -359,20 +365,24 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.45rem 1rem;
-  background: rgba(19, 23, 21, 0.75);
+  padding: 0.4rem 0.9rem;
+  background: rgba(25, 47, 39, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(223, 190, 133, 0.35);
+  border: 1px solid var(--border-gold);
   border-radius: var(--radius-xs);
-  font-size: 0.75rem;
+  font-size: clamp(0.62rem, 1.8vw, 0.75rem);
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: clamp(0.06em, 0.15vw, 0.16em);
   text-transform: uppercase;
   color: var(--accent-champagne);
   width: fit-content;
+  max-width: 100%;
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  flex-wrap: wrap;
+  line-height: 1.4;
+  overflow-wrap: break-word;
 }
 
 .hero-badge-dot {
@@ -380,25 +390,28 @@ img {
   height: 7px;
   border-radius: 50%;
   background-color: var(--accent-gold);
+  flex-shrink: 0;
 }
 
 .hero-headline {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 6.2vw, 5.5rem);
+  font-size: clamp(1.85rem, 5.5vw, 4.8rem);
   font-weight: 600;
-  line-height: 1.08;
-  letter-spacing: -0.015em;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
   color: #FFFFFF;
   max-width: 980px;
   margin-bottom: 1.25rem;
   text-shadow: 0 4px 28px rgba(0, 0, 0, 0.75);
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .hero-headline em {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
-  background: linear-gradient(135deg, #FFF8EB 0%, #DFBE85 55%, #C8A870 100%);
+  background: linear-gradient(135deg, #FFF8EB 0%, #DFCEAA 45%, #B89A65 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
@@ -407,10 +420,10 @@ img {
 
 .hero-subheadline {
   font-family: var(--font-sans);
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-size: clamp(0.95rem, 1.6vw, 1.2rem);
   font-weight: 300;
   letter-spacing: 0.02em;
-  color: rgba(244, 242, 236, 0.92);
+  color: var(--text-secondary);
   max-width: 720px;
   line-height: 1.6;
   margin-bottom: 1.5rem;
@@ -801,6 +814,8 @@ img {
 .horizontal-scroll-container {
   position: relative;
   width: 100%;
+  max-width: 100vw;
+  overflow-x: clip;
   background-color: var(--bg-primary);
 }
 
@@ -953,7 +968,7 @@ img {
 /* Horizontal Track Viewport & Moving Container */
 .hscroll-track-viewport {
   width: 100%;
-  overflow: visible;
+  overflow: hidden;
   position: relative;
 }
 

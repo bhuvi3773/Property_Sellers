@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Compass, Shield, Award, Sparkles, Building2, MapPin } from 'lucide-react';
+import { ArrowRight, Compass, Shield, Award, Building2 } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useRealEstate } from '../context/RealEstateContext';
 import { CATEGORIES } from '../data/properties';

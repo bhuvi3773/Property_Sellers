@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { X, ArrowRight, Phone, Mail } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useRealEstate } from '../../context/RealEstateContext';
 import Logo from '../common/Logo';
 
@@ -74,6 +74,14 @@ export default function FullscreenNav() {
   const { isMenuOpen, closeMenu, favouritesCount, compareCount } = useRealEstate();
   const [activePreview, setActivePreview] = useState(NAV_ITEMS[0]);
   const location = useLocation();
+  const closeBtnRef = useRef(null);
+
+  // Focus close button when menu opens
+  useEffect(() => {
+    if (isMenuOpen && closeBtnRef.current) {
+      closeBtnRef.current.focus();
+    }
+  }, [isMenuOpen]);
 
   // Handle escape key
   useEffect(() => {
@@ -89,7 +97,7 @@ export default function FullscreenNav() {
   // Close menu on route change
   useEffect(() => {
     closeMenu();
-  }, [location.pathname]);
+  }, [location.pathname, closeMenu]);
 
   return (
     <div
@@ -105,6 +113,7 @@ export default function FullscreenNav() {
         </Link>
 
         <button
+          ref={closeBtnRef}
           onClick={closeMenu}
           className="fs-close-btn"
           aria-label="Close menu"

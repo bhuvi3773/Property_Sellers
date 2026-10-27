@@ -4,6 +4,8 @@ import { ArrowUp, ArrowRight, ShieldCheck } from 'lucide-react';
 import { useRealEstate } from '../../context/RealEstateContext';
 import Logo from '../common/Logo';
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
@@ -115,7 +117,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="footer-bottom-bar">
-          <p>© {new Date().getFullYear()} Vault & Vista Real Estate. Curators of Exceptional Residential Architecture.</p>
+          <p>© {CURRENT_YEAR} Vault & Vista Real Estate. Curators of Exceptional Residential Architecture.</p>
           <div className="footer-bottom-links">
             <span className="demo-tag">Frontend Demonstration Project</span>
             <button onClick={scrollToTop} className="back-to-top-btn" aria-label="Back to Top">

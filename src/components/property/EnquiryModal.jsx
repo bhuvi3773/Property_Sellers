@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, Calendar, ShieldCheck, Clock } from 'lucide-react';
+import { X, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { useRealEstate } from '../../context/RealEstateContext';
 
 export default function EnquiryModal() {

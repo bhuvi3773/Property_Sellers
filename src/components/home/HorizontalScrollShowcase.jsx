@@ -172,7 +172,7 @@ export default function HorizontalScrollShowcase({ properties = [] }) {
               transform: `translate3d(-${horizontalTranslateX}px, 0, 0)`
             }}
           >
-            {properties.map((prop, idx) => {
+            {properties.map((prop) => {
               const favourited = isFavourite(prop.id);
               const inCompare = isInCompare(prop.id);
 

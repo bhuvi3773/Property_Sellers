@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Compass, Award, BookOpen, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Compass, BookOpen, ArrowRight } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import Breadcrumbs from '../components/common/Breadcrumbs';
 

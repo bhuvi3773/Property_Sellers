@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { LayoutGrid, List, SlidersHorizontal, ArrowUpDown, X, RotateCcw } from 'lucide-react';
+import { LayoutGrid, List, SlidersHorizontal, ArrowUpDown, X } from 'lucide-react';
 import { useRealEstate } from '../context/RealEstateContext';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import PropertyCard from '../components/property/PropertyCard';
